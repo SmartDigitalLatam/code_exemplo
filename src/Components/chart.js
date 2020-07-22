@@ -161,42 +161,42 @@ class Chart extends Component{
     //armazenando valor da última posição na var k
     let k = FeedPressure_array_2.length;
     
-    //let FeedPressure_value = FeedPressure_array_2[k-100];
-    //let ConcentratedPressure_value = ConcentratedPressure_array_2[k-100];
-    //let FeedConductivity_array_2[i] = FeedConductivity_array_2[k-100];
-    //let PermConductivity_array_2[i] = PermConductivity_array_2[k-100];
-    //let PermFlow_value = PermFlow_array_2[k-100];
-    //let ConcentratedFlow_value = ConcentratedFlow_array_2[k-100];
-    //let FeedFlow_array_2[i] = FeedFlow_array_2[k-100];
-    //let FeeTemperature_value = FeeTemperature_array_2[k-100];
+    let FeedPressure_value = FeedPressure_array_2[1];
+    let ConcentratedPressure_value = ConcentratedPressure_array_2[1];
+    let FeedConductivity_value = FeedConductivity_array_2[1];
+    let PermConductivity_value = PermConductivity_array_2[1];
+    let PermFlow_value = PermFlow_array_2[1];
+    let ConcentratedFlow_value = ConcentratedFlow_array_2[1];
+    let FeedFlow_value = FeedFlow_array_2[1];
+    let FeeTemperature_value = FeeTemperature_array_2[1];
 
     console.log("capturando valor de quantas entradas tem o array no total - k - ")
     console.log(k);
 
-    //console.log("capturando último valor [posição] do dado na array do feed pressure")
-    //console.log(FeedPressure_value);
+    console.log("capturando último valor [posição] do dado na array do feed pressure")
+    console.log(FeedPressure_value);
 
-    //console.log("capturando último valor [posição] do dado na array do concentrated pressure")
-    //console.log(ConcentratedPressure_value);
+    console.log("capturando último valor [posição] do dado na array do concentrated pressure")
+    console.log(ConcentratedPressure_value);
 
-    //console.log("capturando último valor [posição] do dado na array do FeedConductivity_array_2[i]")
-    //console.log(FeedConductivity_array_2[i]);
+    console.log("capturando último valor [posição] do dado na array do FeedConductivity_array_2[i]")
+    console.log(FeedConductivity_value);
 
-    //console.log("capturando último valor [posição] do dado na array do PermConductivity_value")
-    //console.log(PermConductivity_value);
+    console.log("capturando último valor [posição] do dado na array do PermConductivity_value")
+    console.log(PermConductivity_value);
 
-    //console.log("capturando último valor [posição] do dado na array do PermFlow_value")
-    //console.log(PermFlow_value);
+    console.log("capturando último valor [posição] do dado na array do PermFlow_value")
+    console.log(PermFlow_value);
 
-    //console.log("capturando último valor [posição] do dado na array do ConcentratedFlow_value")
-    //console.log(ConcentratedFlow_value);
+    console.log("capturando último valor [posição] do dado na array do ConcentratedFlow_value")
+    console.log(ConcentratedFlow_value);
 
-    //console.log("capturando último valor [posição] do dado na array do FeedFlow_array_2[i]")
-    //console.log(FeedFlow_array_2[i]);
+    console.log("capturando último valor [posição] do dado na array do FeedFlow_array_2[i]")
+    console.log(FeedFlow_value);
 
     
-    //console.log("capturando último valor [posição] do dado na array do FeeTemperature_value")
-    //console.log(FeeTemperature_value);
+    console.log("capturando último valor [posição] do dado na array do FeeTemperature_value")
+    console.log(FeeTemperature_value);
 
     //---------------------------CÁLCULO DA NORMALIZAÇÃO--------------------------------------
     
@@ -216,7 +216,7 @@ class Chart extends Component{
     //DIFFERENTIAL PRESSURE
 
     let PressaoDif_array = [];
-            for (let i=0; i < FeedPressure_array_2.length+1; i++)
+            for (let i=0; i < k; i++)
             {
                 if (FeedPressure_array_2[i]>0){
                 PressaoDif_array[i] = FeedPressure_array_2[i] - ConcentratedPressure_array_2[i];
@@ -224,41 +224,41 @@ class Chart extends Component{
                 else PressaoDif_array[i] = 0; 
             }
     
-            let PressaoDif_value = PressaoDif_array[k-100];
+            let PressaoDif_value = PressaoDif_array[1];
             console.log("capturando último valor [posição] do dado na array do DIFF PRESSURE")
             console.log(PressaoDif_value);
            
 
             //cálculo do TDS ENTRADA CALCULADO (ppm)
- let TDS_entrada_calculado_array[i]_array = [];
+ let TDS_entrada_calculado_array = [];
 
-            for (let i=0; i < FeedConductivity_array_2.length+1; i++){
+            for (let i=0; i < k; i++){
  if (FeedConductivity_array_2[i] === 0) 
  { 
-     TDS_entrada_calculado_array[i]_array[i] = 0;
+     TDS_entrada_calculado_array[i] = 0;
  }
  if (FeedConductivity_array_2[i] > 0 && FeedConductivity_array_2[i] <= 7630) 
  {
-    TDS_entrada_calculado_array[i]_array[i] = 7.7013840097 * Math.pow(10, -20) * Math.exp(Math.pow(-90.475562243 - Math.log(FeedConductivity_array_2[i]), 2) / 188.88442227);
+    TDS_entrada_calculado_array[i] = 7.7013840097 * Math.pow(10, -20) * Math.exp(Math.pow(-90.475562243 - Math.log(FeedConductivity_array_2[i]), 2) / 188.88442227);
  }
  if (FeedConductivity_array_2[i] > 7630) {
-    TDS_entrada_calculado_array[i]_array[i] = 8.0090966 * Math.pow(10, -11) * Math.exp(Math.pow(-50.645805186 - Math.log(FeedConductivity_array_2[i]), 2) / 112.483950289);
+    TDS_entrada_calculado_array[i] = 8.0090966 * Math.pow(10, -11) * Math.exp(Math.pow(-50.645805186 - Math.log(FeedConductivity_array_2[i]), 2) / 112.483950289);
  }
 }
 
-let TDS_entrada_calculado_array[i]_value = TDS_entrada_calculado_array[i]_array[k-100];
+let TDS_entrada_calculado_value = TDS_entrada_calculado_array[1];
 
  
  console.log("capturando último valor [posição] do dado na array do TDS_entrada_calculado_array[i]")
- console.log(TDS_entrada_calculado_array[i]_value);
+ console.log(TDS_entrada_calculado_value);
 
 //cálculo do TDS ENTRADA (sem fórmula e multiplicadopor 0.7 apenas) (ppm)
 let TDS_entrada_array = [];
-for (let i=0; i < FeedConductivity_array_2.length+1; i++){
+for (let i=0; i < k; i++){
     TDS_entrada_array[i] = FeedConductivity_array_2[i]*0.7;
 }
 
-let TDS_entrada_value = TDS_entrada_array[k-100];
+let TDS_entrada_value = TDS_entrada_array[1];
 
 
 console.log("capturando último valor [posição] do dado na array do TDS_entrada")
@@ -267,7 +267,7 @@ console.log(TDS_entrada_value);
  //cálculo do TDS PERMEADO CALCULADO (ppm)
  let TDS_permeado_calculado_array = [];
  
- for (let i=0; i < PermConductivity_array_2.length+1; i++){
+ for (let i=0; i < k; i++){
      if (PermConductivity_array_2[i] === 0) 
      { 
          TDS_permeado_calculado_array[i] = 0;
@@ -282,17 +282,17 @@ console.log(TDS_entrada_value);
      }
     }
 
-        let TDS_permeado_calculado_value = TDS_permeado_calculado_array[k-100];
+        let TDS_permeado_calculado_value = TDS_permeado_calculado_array[1];
         console.log("capturando último valor [posição] do dado na array do TDS_permeado_calculado_array[i]")
         console.log(TDS_permeado_calculado_value);
 
  //cálculo do TDS PERMEADO (ppm)
     let TDS_permeado_array = [];
-    for (let i=0; i < PermConductivity_array_2.length+1; i++){
+    for (let i=0; i < k; i++){
         TDS_permeado_array[i] = PermConductivity_array_2[i]*0.7;
     }
 
-    let TDS_permeado_value = TDS_permeado_array[k-100];
+    let TDS_permeado_value = TDS_permeado_array[1];
 
      console.log("capturando último valor [posição] do dado na array do TDS_permeado")
      console.log(TDS_permeado_value);
@@ -301,7 +301,7 @@ console.log(TDS_entrada_value);
 //cálculo TEMPERATURA CORREÇÃO
 let Temp_correcao_array =[];
 
-for (let i=0; i < FeeTemperature_array_2.length+1; i++){
+for (let i=0; i < k; i++){
  if (FeeTemperature_array_2[i] <= 0) 
  { 
      Temp_correcao_array[i] = 0;
@@ -312,14 +312,14 @@ for (let i=0; i < FeeTemperature_array_2.length+1; i++){
  }
 }
 
-let Temp_correcao_value = Temp_correcao_array[k-100];
+let Temp_correcao_value = Temp_correcao_array[1];
  console.log("capturando último valor [posição] do dado na array do Temp_correcao_array[i]")
  console.log(Temp_correcao_value);
 
  //cálculo CONCENTRAÇÃO MÉDIA CALCULADA ENTRADA (ppm)
  let conc_media_calculada_entrada_array = [];
  
- for (let i=0; i < PermFlow_array_2.length+1; i++){
+ for (let i=0; i < k; i++){
      if (PermFlow_array_2[i] > 0) 
      { 
         if (FeedConductivity_array_2[i] > 0)
@@ -337,33 +337,39 @@ let Temp_correcao_value = Temp_correcao_array[k-100];
      }
     }
 
-        let conc_media_calculada_entrada_value = conc_media_calculada_entrada_array[k-100];
+        let conc_media_calculada_entrada_value = conc_media_calculada_entrada_array[1];
 
         console.log("capturando último valor [posição] do dado na array do conc_media_calculada_entrada_array[i]")
         console.log(conc_media_calculada_entrada_value);
+        console.log(conc_media_calculada_entrada_array);
  
 //cálculo PRESSÃO OSMÓTICA ENTRADA (kgf/cm²)
 let pressao_osmotica_entrada_array = [];
 
-for (let i=0; i < PermFlow_array_2.length+1; i++){
+for (i=0; i < k; i++){
 if (FeedPressure_array_2[i] > 0 && FeeTemperature_array_2[i] > 0)
 {
-pressao_osmotica_entrada_array[i] = 0.0385 * conc_media_calculada_entrada_array[i] * (FeeTemperature_array_2 + 273.15) / ((1000 - (conc_media_calculada_entrada_array[i] / 1000)) * 14.25);
+pressao_osmotica_entrada_array[i] = 0.0385 * conc_media_calculada_entrada_array[i] * (FeeTemperature_array_2[i] + 273.15) / ((1000 - (conc_media_calculada_entrada_array[i] / 1000)) * 14.25);
 }
-if (FeedPressure_array_2[i] <= 0 || FeeTemperature_array_2[i] <= 0 )
+if (FeedPressure_array_2[i] <= 0)
+{
+    pressao_osmotica_entrada_array[i] = 0;
+}
+if ( FeeTemperature_array_2[i] <= 0 )
 {
     pressao_osmotica_entrada_array[i] = 0;
 }
 }
 
-let pressao_osmotica_entrada_value = pressao_osmotica_entrada_array[k-100];
+let pressao_osmotica_entrada_value = pressao_osmotica_entrada_array[1];
 console.log("capturando último valor [posição] do dado na array do pressao_osmotica_entrada")
 console.log(pressao_osmotica_entrada_value);
+console.log(pressao_osmotica_entrada_array);
 
 //cálculo PRESSÃO OSMÓTICA PERMEADO (kgf/cm²)
 let pressao_osmotica_permeado_array = [];
 
-for (let i=0; i < PermFlow_array_2.length+1; i++){
+for (let i=0; i < k; i++){
     if (FeedPressure_array_2[i] <= 0)
     {
         pressao_osmotica_permeado_array[i] = 0;
@@ -389,17 +395,18 @@ for (let i=0; i < PermFlow_array_2.length+1; i++){
     }
 }
 
-let pressao_osmotica_permeado_value = pressao_osmotica_permeado_array[k-100];
+let pressao_osmotica_permeado_value = pressao_osmotica_permeado_array[1];
 
     console.log("capturando último valor [posição] do dado na array do pressao_osmotica_permeado")
     console.log(pressao_osmotica_permeado_value);
+   
 
 
 
  // cálculo da PRESSÃO NET DRIVING
  let pressao_net_driving_array = [];
 
- for (let i=0; i < PermFlow_array_2.length+1; i++){
+ for (let i=0; i < k; i++){
      if (FeedPressure_array_2[i] > 0)
      {
          pressao_net_driving_array[i] = FeedPressure_array_2[i] - (PressaoDif_array[i] / 2) - pressao_osmotica_entrada_array[i] - pressao_permeado + pressao_osmotica_permeado_array[i];
@@ -410,16 +417,17 @@ let pressao_osmotica_permeado_value = pressao_osmotica_permeado_array[k-100];
      }
     }
 
-    let pressao_net_driving_value = pressao_net_driving_array[k-100];
+    let pressao_net_driving_value = pressao_net_driving_array[1];
 
      console.log("capturando último valor [posição] do dado na array do pressao_net_driving")
-     console.log(pressao_net_driving);
+     console.log(pressao_net_driving_value);
+     console.log(pressao_net_driving_array);
  
   
     //cálculo VAZÃO NORMALIZADA DO PERMEADO (m³/h)
     let vazao_normalizada_permeado_array = [];
     
-    for (let i=0; i < PermFlow_array_2.length+1; i++){
+    for (let i=0; i < k; i++){
         if (PermFlow_array_2[i] > 0)
         {
             vazao_normalizada_permeado_array[i] = (pressao_net_driving_zero * Temp_correcao_zero) / (pressao_net_driving_array[i] * Temp_correcao_array[i]) * PermFlow_array_2[i];
@@ -430,7 +438,7 @@ let pressao_osmotica_permeado_value = pressao_osmotica_permeado_array[k-100];
         }
     }
 
-    let vazao_normalizada_permeado_value = vazao_normalizada_permeado_array[k-100];
+    let vazao_normalizada_permeado_value = vazao_normalizada_permeado_array[1];
 
     console.log("capturando último valor [posição] do dado na array do vazao_normalizada_permeado")
     console.log(vazao_normalizada_permeado_value);
@@ -438,7 +446,7 @@ let pressao_osmotica_permeado_value = pressao_osmotica_permeado_array[k-100];
          //cálculo da PASSAGEM SAL NORMALIZADA PERMEADO (%)
          let passagem_normalizada_array = [];
          
-         for (let i=0; i < PermFlow_array_2.length+1; i++){
+         for (let i=0; i < k; i++){
              if (PermFlow_array_2[i] <= 0)
             {
              passagem_normalizada_array[i] = 0;
@@ -457,14 +465,15 @@ let pressao_osmotica_permeado_value = pressao_osmotica_permeado_array[k-100];
             }
         }
          
-        let passagem_normalizada_value = passagem_normalizada_array[k-100];
+        let passagem_normalizada_value = passagem_normalizada_array[1];
 
         console.log("capturando último valor [posição] do dado na array do passagem_normalizada_value")
         console.log(passagem_normalizada_value);
+        console.log(passagem_normalizada_array);
 
             //cálculo REJEIÇÃO SAL NORMALIZADA PERMEADO (%)
         let rejeicao_normalizada_array = [];
-        
+        for (let i=0; i < k; i++){
             if (PermFlow_array_2[i] <= 0)
             {
                 rejeicao_normalizada_array[i] = 0;
@@ -481,11 +490,13 @@ let pressao_osmotica_permeado_value = pressao_osmotica_permeado_array[k-100];
             {
                 rejeicao_normalizada_array[i] = 0;
             }
-            
-            let rejeicao_normalizada_value = rejeicao_normalizada_array[k-100];
+        }
+            let rejeicao_normalizada_value = rejeicao_normalizada_array[1];
 
             console.log("capturando último valor [posição] do dado na array do rejeicao_normalizada")
             console.log(rejeicao_normalizada_value);
+            console.log(rejeicao_normalizada_array);
+            
 
            
 
